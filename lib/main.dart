@@ -1,7 +1,5 @@
 import 'dart:convert';
 import 'dart:core';
-import 'dart:js';
-//import 'package:universal_html/js.dart';
 import 'package:flutter/material.dart';
 import 'package:nxsam_bg/Appli.dart';
 import 'package:nxsam_bg/ClientData.dart';
@@ -35,15 +33,15 @@ class HelloRectangle extends StatelessWidget {
     ['Adam Project', 'Adam Project', 'Adam Project', 'Adam Project', 'Adam Project'],
   ];
 
-  Future<List<ClientData>> usersFuture = fetchData(context);
+  Future<List<ClientData>> usersFuture = fetchData();
 
-  static Future<List<ClientData>> fetchData(context) async {
-    final assetBundle = DefaultAssetBundle.of(context);
-    final data = await assetBundle.loadString('ClientData.dart');
-
-    final body = json.decode(data);
-    return body.map<ClientData>(ClientData.fromJson).toList();
-  }
+  // static Future<List<ClientData>> fetchData(context) async {
+  //   final assetBundle = DefaultAssetBundle.of(context);
+  //   final data = await assetBundle.loadString('ClientData.dart');
+  //
+  //   final body = json.decode(data);
+  //   return body.map<ClientData>(ClientData.fromJson).toList();
+  // }
 
   @override
   Widget build(BuildContext context) {
