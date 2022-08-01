@@ -16,7 +16,7 @@ Future<List<ClientData>> fetchData() async {
     Map<String, dynamic> resp = json.decode(response.body);
     Map<String, dynamic> dataJson = resp["data"];
     Map<String, dynamic> clientsJson = dataJson["clients"];
-    List<Map<String, dynamic>> web = clientsJson["web"];
+    List<dynamic> web = clientsJson["web"];
     return web.map<ClientData>(ClientData.fromJson).toList();
 
   } else {

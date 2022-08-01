@@ -84,7 +84,7 @@ class HelloRectangle extends StatelessWidget {
                                       style: const TextStyle(
                                           fontSize: 20, color: Colors.indigo),
                                       textAlign: TextAlign.left,),
-                                    Text('Applications ${application[index]
+                                    Text('Applications ${application[index%3]   //just because application is currently of length 3
                                         .length}', textAlign: TextAlign.left,),
                                     Row(
                                         mainAxisAlignment: MainAxisAlignment
