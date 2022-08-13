@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:nxsam_bg/Appli.dart';
-import 'package:nxsam_bg/ClientData.dart';
+import 'package:nxsam_bg/Models/ClientData.dart';
 
 void main()
 {
@@ -92,7 +92,7 @@ class HelloRectangle extends StatelessWidget {
                                         children: const [
                                           Text('3 Critical',),
                                           VerticalDivider(
-                                              width: 5, thickness: 2),
+                                              width: 5, thickness: 2,color: Colors.amber),
                                           Text('2 High',),
                                           VerticalDivider(),
                                           Text('2 Low'),
