@@ -1,7 +1,11 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:nxsam_bg/Models/ClientData.dart';
 import 'package:nxsam_bg/Screens/Appli.dart';
+import 'package:nxsam_bg/utils/database_helper.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:intl/intl.dart';
 
 class Client extends StatelessWidget {
 
@@ -46,7 +50,7 @@ class HelloRectangle extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const CircularProgressIndicator();
           } else if (snapshot.hasError) {
-            return const Text('snapshot.error');
+            return Text('${snapshot.error}');
           } else if (snapshot.hasData) {
             final users = snapshot.data!;
 
@@ -63,13 +67,13 @@ class HelloRectangle extends StatelessWidget {
                           // Navigator.push(context, MaterialPageRoute(
                           //     builder: (context) =>
                           //         Appli(project: users[index].client_name,
-                          //             appl: application[index])
+                          //             id: users[index].client_id)
                           // ));
                         },
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment
@@ -79,7 +83,7 @@ class HelloRectangle extends StatelessWidget {
                                       style: const TextStyle(
                                           fontSize: 20, color: Colors.indigo),
                                       textAlign: TextAlign.left,),
-                                    Text('Applications ${application[index%3]   //just because application is currently of length 3
+                                    Text('Applications ${application[index%3]
                                         .length}', textAlign: TextAlign.left,),
                                     Row(
                                         mainAxisAlignment: MainAxisAlignment

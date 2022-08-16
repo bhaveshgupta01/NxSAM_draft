@@ -1,15 +1,19 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:nxsam_bg/Screens/Audit.dart';
 import 'package:http/http.dart' as http;
+import 'package:nxsam_bg/Models/ProjectData.dart';
+import 'package:nxsam_bg/utils/database_helper.dart';
+import 'package:sqflite/sqflite.dart';
 
 class Appli extends StatelessWidget {
   final String project;
-  final List<String> appl;
+  final int id;
 
   const Appli({
     Key? key,
     required this.project,
-    required this.appl,
+    required this.id,
   }) : super(key: key);
 
   @override
@@ -23,19 +27,22 @@ class Appli extends StatelessWidget {
           title: Text(project, style: const TextStyle(color: Colors.indigo, fontSize: 20)),
           backgroundColor: Colors.white,
         ),
-        body: HelloRectangle(appl: appl),
+        body: HelloRectangle(id: id),
       ),
     );
   }
 }
 
 class HelloRectangle extends StatelessWidget {
-  final List<String> appl;
+  final int id;
+  // final List<String> appl;
 
-  const HelloRectangle({
+  HelloRectangle({
     Key? key,
-    required this.appl,
+    required this.id,
   }) : super(key: key);
+
+  Future<List<ProjectData>> projectsFuture = fetchData();
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +64,7 @@ class HelloRectangle extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(appl[index], style: const TextStyle(fontSize: 20,color: Colors.indigo),textAlign: TextAlign.left,),
                             const Text('4 Audits' ,textAlign: TextAlign.left,),

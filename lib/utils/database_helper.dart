@@ -64,4 +64,12 @@ class DatabaseHelper
     int? result = Sqflite.firstIntValue(x);
     return result;
   }
+
+  // // Method to insert the Project record to the Database
+  // Future<ProjectData> save(ProjectData project) async {
+  //   var dbClient = await database;
+  //   // this will insert the Project object to the DB after converting it to a json
+  //   project.project_id = (await dbClient?.insert(ProjectTable, fetchData))!;
+  //   return project;
+  // }
 }
