@@ -1,13 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:nxsam_bg/Models/ClientData.dart';
 import 'package:nxsam_bg/Screens/Appli.dart';
-import 'package:nxsam_bg/utils/database_helper.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:intl/intl.dart';
 
 class Client extends StatelessWidget {
+  const Client({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -64,25 +62,24 @@ class HelloRectangle extends StatelessWidget {
                       margin: const EdgeInsets.all(10),
                       child: InkWell(
                         onTap: () {
-                          // Navigator.push(context, MaterialPageRoute(
-                          //     builder: (context) =>
-                          //         Appli(project: users[index].client_name,
-                          //             id: users[index].client_id)
-                          // ));
+                          Navigator.push(context, MaterialPageRoute(
+                              builder: (context) =>
+                                  Appli(project: users[index].client_name,
+                                      id: users[index].client_id)
+                          ));
                         },
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Column(
-                                  mainAxisAlignment: MainAxisAlignment
-                                      .center,
+                                  crossAxisAlignment: CrossAxisAlignment
+                                      .start,
                                   children: [
                                     Text(users[index].client_name,
                                       style: const TextStyle(
-                                          fontSize: 20, color: Colors.indigo),
-                                      textAlign: TextAlign.left,),
+                                          fontSize: 20, color: Colors.indigo),),
                                     Text('Applications ${application[index%3]
                                         .length}', textAlign: TextAlign.left,),
                                     Row(

@@ -48,7 +48,7 @@ class HelloRectangle extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(AuditName[index], style: const TextStyle(fontSize: 20, color: Colors.indigo),textAlign: TextAlign.left,),
                         const Text('In Progress' ,textAlign: TextAlign.left,),
