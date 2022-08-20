@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:nxsam_bg/Screens/Vulnerability.dart';
 
 class Audit extends StatelessWidget {
   final String project;
@@ -42,59 +43,74 @@ class HelloRectangle extends StatelessWidget {
         itemBuilder: (BuildContext context, index) {
           return Card(
             margin: const EdgeInsets.all(10),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(AuditName[index], style: const TextStyle(fontSize: 20, color: Colors.indigo),textAlign: TextAlign.left,),
-                        const Text('In Progress' ,textAlign: TextAlign.left,),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children:const [
-                              Text('3 Critical',),
-                              VerticalDivider(),
-                              Text('2 High',),
-                              VerticalDivider(),
-                              Text('2 Low'),
-                              VerticalDivider(),
-                              Text('2 Medium',)
-                            ]
-                        ),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children:[
-                              IconButton(onPressed: (){}, icon: const Icon(Icons.lock_clock)),
-                              const Text('10 July 22',)
-                            ]
-                        )
-                      ],
-                    ),
-                    PopupMenuButton(
-
-                        icon: const Icon(Icons.more_vert),
-                        itemBuilder: (context) => [
-                          const PopupMenuItem(
-                            child: Text("Change Status"),
-                            value: 1,
+            child: InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (context) =>
+                        Vulner()
+                ));
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(AuditName[index], style: const TextStyle(fontSize: 20, color: Colors.indigo),textAlign: TextAlign.left,),
+                          const Text('In Progress' ,textAlign: TextAlign.left,),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children:const [
+                                Text('3 Critical',),
+                                VerticalDivider(),
+                                Text('2 High',),
+                                VerticalDivider(),
+                                Text('2 Low'),
+                                VerticalDivider(),
+                                Text('2 Medium',)
+                              ]
                           ),
-                          const PopupMenuItem(
-                            child: Text("Assign Auditor"),
-                            value: 2,
-                          ),
-                          const PopupMenuItem(
-                            child: Text("Generate Report Pdf"),
-                            value: 3,
-                          ),
-                          const PopupMenuItem(
-                            child: Text("Generate Report"),
-                            value: 4,
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children:[
+                                IconButton(onPressed: (){}, icon: const Icon(Icons.lock_clock)),
+                                const Text('10 July 22',)
+                              ]
                           )
-                        ])
-                  ]
+                        ],
+                      ),
+                      PopupMenuButton(
+                          icon: const Icon(Icons.more_vert),
+                          onSelected: (result) {
+                            if (result == 3) {
+                              Navigator.push(context, MaterialPageRoute
+                                (builder: (context) => Vulner()),
+                              );
+                            }
+                          },
+                          itemBuilder: (context) => [
+                            const PopupMenuItem(
+                              child: Text("Change Status"),
+                              value: 1,
+                            ),
+                            const PopupMenuItem(
+                              child: Text("Assign Auditor"),
+                              value: 2,
+                            ),
+                            const PopupMenuItem(
+                              child: Text("Generate Report Pdf"),
+                              value: 3,
+                            ),
+                            const PopupMenuItem(
+                              child: Text("Generate Report"),
+                              value: 4,
+                            )
+                          ]
+                      )
+                    ]
+                ),
               ),
             ),
             //)
