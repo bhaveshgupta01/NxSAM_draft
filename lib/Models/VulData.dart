@@ -37,7 +37,7 @@ List<VulData> fetchData()
         ['HTML Injection POC','HTML Injection POC']],
       Comment: ['form tag issues','form tag issues','form tag issues',],
       CommentAuthor: ['bala','bala','bala',],
-      approved: true, priority: 2,),
+      approved: true, priority: 1,),
     const VulData(name: 'Cross Site Request Forgery (CSRF)',
       link: 'http://abcd.com',
       Artifacts: [['HTML Injection POC','HTML Injection POC']],
